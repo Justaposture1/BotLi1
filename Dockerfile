@@ -1,7 +1,7 @@
 FROM ubuntu:jammy
 COPY . .
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip python3 python3-pip git
+RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip python3 python3-pip git && apt-get install -y wget p7zip
 RUN mv config.yml.default config.yml
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
@@ -9,6 +9,12 @@ RUN python3 -m pip install --no-cache-dir -r requirements.txt
 RUN wget https://abrok.eu/stockfish/latest/linux/stockfish_x64_bmi2.zip -O stockfish.zip
 RUN unzip stockfish.zip && rm stockfish.zip
 RUN mv stockfish_* engines/stockfish && chmod +x engines/stockfish
+
+RUN wget --no-check-certificate -nv "https://gitlab.com/OIVAS7572/Goi5.1.bin/-/raw/MEGA/Goi5.1.bin.7z" -O Goi5.1.bin.7z 
+RUN 7zr e Goi5.1.bin.7z && rm Goi5.1.bin.7z
+
+RUN wget --no-check-certificate "https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z" -O Cerebellum3Merge.bin.7z
+Run 7zr e Cerebellum3Merge.bin.7z && rm Cerebellum3Merge.bin.7z
 
 # Fairy-Stockfish - Depending on your CPU it may be necessary to pick a binary other than bmi2
 # To use Fairy-Stockfish, uncomment the following lines and adjust config.yml.default accordingly

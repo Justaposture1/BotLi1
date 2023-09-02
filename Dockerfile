@@ -13,7 +13,7 @@ RUN mv stockfish_* engines/stockfish && chmod +x engines/stockfish
 RUN wget --no-check-certificate -nv "https://gitlab.com/OIVAS7572/Goi5.1.bin/-/raw/MEGA/Goi5.1.bin.7z" -O Goi5.1.bin.7z 
 RUN 7zr e Goi5.1.bin.7z && rm Goi5.1.bin.7z
 
-RUN wget --no-check-certificate "https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z" -O Cerebellum3Merge.bin.7z
+RUN wget --no-check-certificate "https://zipproth.de/Brainfish/Cerebellum_Light_3Merge_200916.7z" -O Cerebellum3Merge.bin.7z
 RUN 7zr e Cerebellum3Merge.bin.7z && rm Cerebellum3Merge.bin.7z
 
 # Fairy-Stockfish - Depending on your CPU it may be necessary to pick a binary other than bmi2

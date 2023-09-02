@@ -1,15 +1,15 @@
-token: "XXXXXXXXXXXXXXXXXXXXXXXX"         # Lichess OAuth2 Token.
+token: "lip_lJQhMjLbUYKWYDBpxF4q"         # Lichess OAuth2 Token.
 
 engines:
   standard:                               # Engine used for standard chess and when no suitable special engine is configured.
     dir: "./engines"                      # Directory containing the engine.
     name: "stockfish"                     # Binary name of the engine to use.
     ponder: true                          # Think on opponent's time.
-    use_syzygy: true                      # Whether the engine should be configured to use syzygy.
+    use_syzygy: false                      # Whether the engine should be configured to use syzygy.
     silence_stderr: false                 # Suppresses stderr output.
     uci_options:                          # Arbitrary UCI options passed to the engine. (Commenting allowed)
-      Threads: 4                          # Max CPU threads the engine can use.
-      Hash: 256                           # Max memory (in megabytes) the engine can allocate.
+      Threads: 24                          # Max CPU threads the engine can use.
+      Hash: 10000                           # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 100                  # Increase if your bot flags games too often.
 # variants:                               # Engine used for variants when no suitable special engine is configured.
 #   dir: "./engines"                      # Directory containing the engine.
@@ -39,23 +39,29 @@ gaviota:
   max_pieces: 5                           # Count of max pieces in the local gaviota endgame tablebases.
 
 opening_books:
-  enabled: false                          # Activate opening books.
+  enabled: true                          # Activate opening books.
   priority: 400                           # Priority with which this move source is used. Higher priority is used first.
   books:
-#   bullet:
-#     selection: weighted_random          # Move selection is one of "weighted_random", "uniform_random" or "best_move".
-#     names:                              # List of names of books to use in bullet.
-#       - BulletBook
-#       - DefaultBook
+    bullet:
+      selection: weighted_random          # Move selection is one of "weighted_random", "uniform_random" or "best_move".
+      names:                              # List of names of books to use in bullet.
+        - Goi5.1
+        - Drawkiller_EloZoom_big
+        - Goi5.1
+        - Perfect2021
+        - tcec
+        - komodo
+        - elo3300
+        - Cerebellum3Merge        
 #   standard_black:
 #     selection: best_move                # Move selection is one of "weighted_random", "uniform_random" or "best_move".
 #     names:                              # List of names of books to use as black.
 #       - BlackBook
-    standard:
-      selection: weighted_random          # Move selection is one of "weighted_random", "uniform_random" or "best_move".
+#    standard:
+#      selection: weighted_random          # Move selection is one of "weighted_random", "uniform_random" or "best_move".
 #     max_depth: 16                       # Half move max depth. (Comment this line for max depth)
-      names:                              # List of names of books to use if there is no specific book for the time control, white, black or chess960.
-        - DefaultBook
+#      names:                              # List of names of books to use if there is no specific book for the time control, white, black or chess960.
+#        - DefaultBook
 #   Use the same pattern for 'bullet', 'blitz', 'rapid', 'classical',
 #   'antichess', 'atomic', 'chess960', 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
 #   Append '_white' or '_black' to use the books only as the specific color.
@@ -129,7 +135,7 @@ challenge:                                # Incoming challenges. (Commenting all
   time_controls:                          # Speeds or time controls in initial_minutes+increment_seconds format to accept.
     - bullet
     - blitz
-    - rapid
+#    - rapid
 #   - classical
 #   - 25+0
   bot_modes:                              # Game modes to accept against BOTs.
@@ -179,4 +185,11 @@ messages:
 #   - Username2
 
 books:                                    # Names of the opening books (to be used above in the opening_books section) and paths to the opening books.
-  DefaultBook: "/path/to/DefaultBook.bin"
+  Goi5.1: "Goi5.1.bin"
+  Drawkiller_EloZoom_big: "Drawkiller_EloZoom_big.bin"
+  Perfect2021: "Perfect2021.bin"
+  tcec: "tcec.bin"
+  komodo: "komodo.bin"
+  elo3300: "elo3300.bin"
+  Cerebellum3Merge: "Cerebellum3Merge.bin"
+
